@@ -1,7 +1,9 @@
 if exists("loaded_MakeDoxygenComment")
+    "echo 'MakeDoxygenComment Already Loaded.'
     finish
 endif
 let loaded_MakeDoxygenComment = 1
+"echo 'Loading MakeDoxygenComment...'
 
 if !exists("g:MakeDoxygenComment_briefTag")
     let g:MakeDoxygenComment_briefTag="@brief "
@@ -30,7 +32,7 @@ function! <SID>MakeDoxygenComment()
     exec "normal `d"
     let l:line=getline(line("."))
     let l:startPos=match(l:line, "(")
-    let l:matchIndex=match(l:line,"\\i\\+\s*[,)]",l:startPos)
+    let l:matchIndex=match(l:line,'\i\+\s*[,)]',l:startPos)
     let l:foundParam=0
     while (l:matchIndex >= 0)
         let l:foundParam=1
@@ -47,7 +49,7 @@ function! <SID>MakeDoxygenComment()
         "echo "total=" . (l:matchIndex+strlen(l:param)+1)
         let l:startPos=(l:matchIndex+strlen(l:param)+1)
         "echo "l:startPos after: " . l:startPos
-        let l:matchIndex=match(line,"\\i\\+\s*[,)]",l:startPos)
+        let l:matchIndex=match(l:line,'\i\+\s*[,)]',l:startPos)
     endwhile
 
     exec l:nextParamLine
