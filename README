@@ -1,0 +1,30 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=674
+
+Generates a doxygen comment skeleton for a C, C++,  or Java function, including @brief, @param (for each named argument), and @return.  The tag text as well as a comment block header and footer are configurable.  (Consequently, you can have \brief, etc. if you wish, with little effort.)
+
+It's definitely a little rough around the edges, but I hope you find it useful.
+
+To use:  In vim with the cursor on the line of the function header that contains the parameters (if any), execute the command :Dox.  This will generate the skeleton and leave the cursor after the @brief tag.
+
+Limitations:
+Assumes that the function has a blank line above it and that all of the parameters are on the same line.  
+Not able to update a comment block after it's been written.
+Writes the @return tag for a void function.
+
+Example:
+Given:
+int foo(char mychar, int yourint, double myarray[])
+{ //...
+}
+
+Issuing the :Dox command with the cursor on the function declaration would generate
+
+/**
+ * @brief
+ * 
+ * @param mychar
+ * @param myint
+ * @param myarray
+ *
+ * @returns
+ **/
