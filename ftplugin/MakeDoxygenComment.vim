@@ -22,7 +22,7 @@ endif
 function! <SID>MakeDoxygenComment()
     mark d
     exec "normal {"
-    exec "normal i/**" . g:MakeDoxygenComment_blockHeader ."\<cr>" . g:MakeDoxygenComment_briefTag
+    exec "normal o/**" . g:MakeDoxygenComment_blockHeader ."\<cr>" . g:MakeDoxygenComment_briefTag
     let l:synopsisLine=line(".")
     let l:synopsisCol=col(".")
     let l:nextParamLine=l:synopsisLine+2
